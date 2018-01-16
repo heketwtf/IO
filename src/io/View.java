@@ -31,14 +31,15 @@ public class View extends JFrame {
 	private Controller controller = new Controller();
 	private Model model = Model.getModel();
 	
+	
 	public void Reset(){
 		View.this.input.setText(null);
 		View.this.output.setText(null);
 		model.setGuessesLeft(10);
 		model.setCheating();
 		model.setSecret();
-		System.out.println(model.getSecret());
-		System.out.println(model.isCheating());
+	//	System.out.println(model.getSecret());
+	//	System.out.println(model.isCheating());
 		
 	}
 	
@@ -90,6 +91,7 @@ public class View extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
 	public View() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,6 +101,8 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
+		//input - pole do wprowadzania
 		input = new JTextField();
 		input.setBounds(156, 307, 86, 20);
 		contentPane.add(input);
@@ -106,7 +110,7 @@ public class View extends JFrame {
 		setLocationRelativeTo(null);
 		this.setTitle("Mastermind");
 		
-
+		//output - pole wyswietlajace podpowiedzi
 		output = new JTextPane();
 		output.setEditable(false);
 	
@@ -119,9 +123,8 @@ public class View extends JFrame {
 	    contentPane.add(scroll);
 
 	        
-		
-	       
-	        
+//==========================================================================================================================================================	       
+   
 		JButton btnNewButton = new JButton("Sprawdz");
 		btnNewButton.setMargin(new Insets(1,1,1,1));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -129,10 +132,10 @@ public class View extends JFrame {
 				String eldo = new String(input.getText());
 				
 				if(View.this.controller.validateInput(eldo)){
-					model.checkSecret(eldo);
+					model.checkSecret(eldo);	
 					
 					output.setText("Wpisany szyfr: "+eldo+"\n"+"Iloœæ znaków na dobrych pozycjach: "+model.getBlack()+"\n"+
-					"Iloœæ znaków na z³ych pozycjach: "+model.getWhite()+"\n"+"Pozosta³e próby: "+model.getGuessesLeft()+"\n\n"+output.getText()+"\n");
+					"Iloœæ znaków na z³ych pozycjach: "+model.getWhite()+"\n"+"Pozosta³e próby: "+model.getGuessesLeft()+"\n\n"+output.getText()+"\n");		
 					
 					output.setCaretPosition(0);	
 					
@@ -140,13 +143,11 @@ public class View extends JFrame {
 					{
 						JOptionPane.showMessageDialog(View.this, "Przegrana");
 						newGame();
-					}
-					
+					}					
 					if(View.this.model.getBlack()==4){
 						JOptionPane.showMessageDialog(View.this, "Wygrana");
 						newGame();
 					}
-					
 				}
 				else
 				{
@@ -154,10 +155,11 @@ public class View extends JFrame {
 					input.setText("");
 				}	
 			}
-		});
-		
+		});		
 		btnNewButton.setBounds(16, 338, 80, 23);
 		contentPane.add(btnNewButton);
+
+//==========================================================================================================================================================
 		
 		JButton btnNewButton_1 = new JButton("Oszust");
 		btnNewButton_1.setBounds(112, 338, 80, 23);
@@ -176,7 +178,9 @@ public class View extends JFrame {
 		});
 		contentPane.add(btnNewButton_1);
 
+//==========================================================================================================================================================
 		
+
 		JButton btnNewButton_2 = new JButton("Reset");
 		btnNewButton_2.setBounds(208, 338, 80, 23);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -201,7 +205,7 @@ public class View extends JFrame {
 		contentPane.add(btnNewButton_2);	
 		
 		
-		
+//==========================================================================================================================================================		
 		
 		JButton btnNewButton_3 = new JButton("Koniec");
 		btnNewButton_3.addActionListener(new ActionListener() {
@@ -224,7 +228,6 @@ public class View extends JFrame {
 		});
 		btnNewButton_3.setBounds(304, 338, 80, 23);
 		contentPane.add(btnNewButton_3);
-		
 		
 		
 

@@ -16,8 +16,8 @@ public class Model {
 		setCheating();
 		setBlack(0);
 		setWhite(0);	
-		System.out.println(getSecret());
-		System.out.println(isCheating());
+		//System.out.println(getSecret());
+		//System.out.println(isCheating());
 	}
 	
 	public static Model getModel(){
@@ -69,7 +69,7 @@ public class Model {
 		this.Secret = x;
 	}
 	
-	public void checkSecret(String x) throws IllegalArgumentException{
+	public void checkSecret(String x){
 		setBlack(0);
 		setWhite(0);
 		char[] temp = this.Secret.toCharArray();
@@ -82,6 +82,7 @@ public class Model {
 				str.append(random.nextInt(10));
 			temp = str.toString().toCharArray();
 		}
+		
 		
 		for(int i=0;i<4;i++){
 			if(input[i]==temp[i]){
@@ -101,9 +102,9 @@ public class Model {
 			}
 		}
 		this.setGuessesLeft(this.getGuessesLeft()-1);
-		System.out.println("Black "+getBlack());
-		System.out.println("White "+getWhite());
-		System.out.println("Guessesleft "+getGuessesLeft());
+		//System.out.println("Black "+getBlack());
+		//System.out.println("White "+getWhite());
+		//System.out.println("Guessesleft "+getGuessesLeft());
 		
 		
 			
